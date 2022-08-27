@@ -1,0 +1,10 @@
+@use '../../scss/util' as u;
+
+.button {
+    padding: 1.125rem 3.75rem;
+    font-size: 1.25em;
+    color: u.$white;
+    background-color: u.$blue;
+    border: none;
+    border-radius: .5rem;
+}
