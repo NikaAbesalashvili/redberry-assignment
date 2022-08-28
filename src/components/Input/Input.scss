@@ -1,0 +1,22 @@
+@use '../../scss/util' as u;
+
+.input-label {
+    font-size: 1.125em;
+    font-weight: 500;
+    margin-bottom: .5rem;
+}
+
+.input {
+    margin-bottom: .5rem;
+    padding: 1rem .5rem;
+    border-radius: .5rem;
+    border: 1px solid u.$semiBlue;
+    outline: none;
+}
+
+.input-hint {
+    margin-bottom: 1rem;
+    font-size: .875em;
+    font-weight: 300;
+    color: u.$semiBlack;
+}

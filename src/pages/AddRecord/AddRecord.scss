@@ -1,0 +1,13 @@
+@use '../../scss/util' as u;
+
+.add-record-section {
+    background-color: u.$lightGrey;
+    
+    .add-record-form {
+        padding: 2rem .75rem;
+        background-color: u.$white;
+        border-radius: .85rem .85rem 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+}

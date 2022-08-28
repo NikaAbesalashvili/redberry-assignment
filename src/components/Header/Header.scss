@@ -1,0 +1,41 @@
+@use '../../scss/util' as u;
+
+.grey {
+    background-color: u.$lightGrey;
+}
+
+header {
+
+    padding: 1rem 0;
+    display: flex;
+    gap: 4.5rem;
+
+    .back-button {
+        font-size: 1.25em;
+        padding-inline: 1rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .header-texts {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-text {
+        font-size: 1em;
+        font-weight: 700;
+        color: u.$black;
+    }
+
+    .step-text {
+        font-size: .875em;
+        color: u.$grey;
+        font-weight: 400;
+    }
+
+}
