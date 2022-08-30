@@ -1,0 +1,30 @@
+.radio-buttons {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .radio-group {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .radio-group-text{
+        width: 100%;
+        font-size: 1.125em;
+        font-weight: 500;
+    }
+    
+    .radio-input {
+        cursor: pointer;
+    }
+
+    .radio-label {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+}

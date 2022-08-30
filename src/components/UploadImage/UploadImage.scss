@@ -21,12 +21,8 @@
         align-items: center;
     }
 
-    .upload-image-button {
+    .camera-icon {
         margin-bottom: 1rem;
-        background: transparent;
-        border: none;
-        font-size: 3em;
-        color: u.$semiLightBlue;
         cursor: pointer;
     }
 
@@ -41,5 +37,10 @@
 
     .laptop-image-input {
         display: none;
+    }
+
+    .laptop-image {
+        width: 100%;
+        border-radius: inherit;
     }
 }

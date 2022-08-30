@@ -10,4 +10,17 @@
         display: flex;
         flex-direction: column;
     }
+
+    .form-buttons {
+        display: flex;
+    }
+
+    .fend {
+        justify-content: flex-end;
+    }
+
+    .space-between {
+        justify-content: space-between;
+    }
+
 }

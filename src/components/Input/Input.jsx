@@ -6,22 +6,25 @@ const Input = ({
     inputPlaceholder,
     inputName,
     inputValue,
-    inputHint,
+    inputHint = null,
     handleInputChange,
-    inputType = 'Text',
+    inputType = 'text',
+    min = null
 }) => {
     return (
         <>
             <label className='input-label' htmlFor={labelForInputId} >{labelText}</label>
             <input
-                className='input'
+                className={`input ${inputType === 'number' && 'no-arrows'}`}
                 type={inputType}
                 placeholder={inputPlaceholder}
                 name={inputName}
                 value={inputValue}
                 onChange={handleInputChange}
+                min={min && min}
+                
             />
-            <p className='input-hint' >{inputHint}</p>
+            {inputHint && <p className='input-hint' >{inputHint}</p>}
         </>
     );
 };

@@ -1,17 +1,15 @@
-import { AiFillCamera } from 'react-icons/ai';
+import cameraIcon from '../../assets/camera-icon.png'
 import './UploadImage.scss';
 
 const UploadImage = ({ handleLaptopImageupload, laptopImage }) => {
     return (
         <div className={`upload-image-container ${!laptopImage && 'vertical-padding'}`}>
             {laptopImage ? (
-                <img src="laptop-image" alt="Laptop Image" />
+                <img className='laptop-image' src={laptopImage} alt="Laptop Image" />
             ) : (
 
                 <label htmlFor='laptop-image-input' >
-                    <button className="upload-image-button">
-                        <AiFillCamera/>
-                    </button>
+                    <img className='camera-icon' src={cameraIcon} alt="Camera Icon" />
                     <h2 className='upload-image-text' >ლეპტოპის ფოტოს ატვირთვა</h2>
                     <input
                         className='laptop-image-input'
@@ -21,7 +19,7 @@ const UploadImage = ({ handleLaptopImageupload, laptopImage }) => {
                         onChange={handleLaptopImageupload}
                     />
                 </label>
-                
+
             )}
         </div>
     );
