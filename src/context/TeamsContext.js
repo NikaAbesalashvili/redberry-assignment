@@ -13,8 +13,8 @@ export const TeamsProvider = ({ children }) => {
     
     const loadTeams = async () => {
         const apiData = await fetchTeams();
-        const { data } = apiData;
-        setTeams(data.data);
+        const { data } = apiData.data;
+        setTeams(data);
     };
 
     return (

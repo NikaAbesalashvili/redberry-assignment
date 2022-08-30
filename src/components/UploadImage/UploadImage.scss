@@ -1,0 +1,45 @@
+@use '../../scss/util' as u;
+
+.vertical-padding {
+    padding: 5rem 0;
+}
+
+.upload-image-container {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: u.$lightestBlue;
+    border: 2px dashed u.$darkBlue;
+    border-radius: .5rem;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .upload-image-button {
+        margin-bottom: 1rem;
+        background: transparent;
+        border: none;
+        font-size: 3em;
+        color: u.$semiLightBlue;
+        cursor: pointer;
+    }
+
+    .upload-image-text {
+        padding: 0 6rem;
+        width: fit-content;
+        text-align: center;
+        font-size: 1em;
+        font-weight: 400;
+        color: u.$darkBlue;
+    }
+
+    .laptop-image-input {
+        display: none;
+    }
+}

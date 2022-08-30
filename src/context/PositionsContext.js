@@ -13,8 +13,8 @@ export const PositionsProvider = ({ children }) => {
 
     const loadPositions = async () => {
         const apiData = await fetchPositions();
-        const { data } = apiData;
-        setPositions(data.data);
+        const { data } = apiData.data;
+        setPositions(data);
     };
 
     return (
