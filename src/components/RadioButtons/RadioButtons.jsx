@@ -1,3 +1,4 @@
+import excIcon from '../../assets/exc-icon.png';
 import './RadioButtons.scss';
 
 const RadioButtons = ({
@@ -8,10 +9,14 @@ const RadioButtons = ({
     secondOption,
     inputName,
     handleRadioButtonChange,
+    error,
 }) => {
     return (
         <div className='radio-buttons' >
-            <h2 className="radio-group-text">{radioGroupText}</h2>
+            <h2 className={`radio-group-text ${error && 'radio-text-error'}`}>
+                {radioGroupText}
+                {error && <img className='exc-radio-icon' src={excIcon} />}
+            </h2>
             <div className="radio-group" onChange={handleRadioButtonChange} >
 
                 <input

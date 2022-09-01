@@ -6,12 +6,16 @@ import './AddRecord.scss';
 const AddRecord = () => {
 
     const {
+        buttonType,
+        imageToDisplay,
         addRecordStep,
         recordData,
         teams,
         positions,
         laptopBrands,
         laptopCPUs,
+        errors,
+        laptopErrors,
         handleBackButtonClick,
         handleChange,
         handleSelectChange,
@@ -41,7 +45,9 @@ const AddRecord = () => {
                             inputValue={recordData.name}
                             inputHint='მინიმუმ 2 სიმბოლო, ქართული ასოები'
                             handleInputChange={handleChange}
+                            error={errors.nameError}
                         />
+
                         <Input
                             labelText='გვარი'
                             labelForInputId='surname'
@@ -50,6 +56,7 @@ const AddRecord = () => {
                             inputValue={recordData.surname}
                             inputHint='მინიმუმ 2 სიმბოლო, ქართული ასოები'
                             handleInputChange={handleChange}
+                            error={errors.surnameError}
                         />
 
                         {teams.length > 0 && (
@@ -58,6 +65,7 @@ const AddRecord = () => {
                                 handleSelectChange={handleSelectChange}
                                 selectedOption='თიმი'
                                 name='team_id'
+                                error={errors.teamError}
                             />
                         )}
 
@@ -67,6 +75,7 @@ const AddRecord = () => {
                                 handleSelectChange={handleSelectChange}
                                 selectedOption='პოზიცია'
                                 name='position_id'
+                                error={errors.positionError}
                             />
                         )}
 
@@ -79,6 +88,7 @@ const AddRecord = () => {
                             inputHint='უნდა მთავრდებოდეს @redberry.ge-ით'
                             handleInputChange={handleChange}
                             inputType='email'
+                            error={errors.emailError}
                         />
 
                         <Input
@@ -90,6 +100,7 @@ const AddRecord = () => {
                             inputHint='ქართული მობ-ნომრის ფორმატი'
                             handleInputChange={handleChange}
                             inputType='tel'
+                            error={errors.phoneNumberError}
                         />
 
                     </>
@@ -98,7 +109,8 @@ const AddRecord = () => {
 
                             <UploadImage
                                 handleLaptopImageupload={handleLaptopImageUpload}
-                                laptopImage={recordData.laptop_image}
+                                laptopImage={imageToDisplay}
+                                error={laptopErrors.laptopImageError}
                             />
 
                             <Input
@@ -109,6 +121,7 @@ const AddRecord = () => {
                                 inputValue={recordData.laptop_name}
                                 inputHint='ლათინური ასოები, ციფრები, !@#$%^&*()_+='
                                 handleInputChange={handleChange}
+                                error={laptopErrors.laptopNameError}
                             />
 
                             <Select                 
@@ -116,6 +129,7 @@ const AddRecord = () => {
                                 handleSelectChange={handleSelectChange}
                                 selectedOption='ლეპტოპის ბრენდი'
                                 name='laptop_brand_id'
+                                error={laptopErrors.laptopBrandError}
                             />
 
                             <Select                 
@@ -123,6 +137,7 @@ const AddRecord = () => {
                                 handleSelectChange={handleSelectChange}
                                 selectedOption='CPU'
                                 name='laptop_cpu'
+                                error={laptopErrors.laptopCPUError}
                             />
 
                             <Input
@@ -135,6 +150,7 @@ const AddRecord = () => {
                                 handleInputChange={handleChange}
                                 inputType='number'
                                 min={1}
+                                error={laptopErrors.laptopCPUCoresError}
                             />
 
                             <Input
@@ -147,6 +163,7 @@ const AddRecord = () => {
                                 handleInputChange={handleChange}
                                 inputType='number'
                                 min={1}
+                                error={laptopErrors.laptopCPUThreadsError}
                             />
 
                             <Input
@@ -159,16 +176,18 @@ const AddRecord = () => {
                                 handleInputChange={handleChange}
                                 inputType='number'
                                 min={1}
+                                error={laptopErrors.laptopRAMError}
                             />
 
                             <RadioButtons
                                 radioGroupText='მეხსიერების ტიპი'
-                                firstValue='ssd'
+                                firstValue='SSD'
                                 firstOption='SSD'
-                                secondValue='hdd'
+                                secondValue='HDD'
                                 secondOption='HDD'
                                 inputName='laptop_hard_drive_type'
                                 handleRadioButtonChange={handleChange}
+                                error={laptopErrors.laptopHarddriveError}
                             />
                             
                             <Input
@@ -191,16 +210,18 @@ const AddRecord = () => {
                                 handleInputChange={handleChange}
                                 inputType='number'
                                 min={1}
+                                error={laptopErrors.laptopPriceError}
                             />
 
                             <RadioButtons
                                 radioGroupText='ლეპტოპის მდგომარეობა'
                                 firstValue='new'
                                 firstOption='ახალი'
-                                secondValue='old'
-                                secondOption='ძველი'
+                                secondValue='used'
+                                secondOption='მეორადი'
                                 inputName='laptop_state'
                                 handleRadioButtonChange={handleChange}
+                                error={laptopErrors.laptopStateError}
                             />
 
                         </>
@@ -208,11 +229,22 @@ const AddRecord = () => {
                     )}
 
                     <div className={`form-buttons ${addRecordStep < 2 ? 'fend' : 'space-between'}`} >
+                        
+                        {addRecordStep === 2 && (
+                            <span
+                                className='back-span'
+                                onClick={handleBackButtonClick}
+                            >
+                                უკან
+                            </span>
+                        )}
+                        
                         <Button
                             buttonText='შემდეგი'
-                            buttonType='button'
+                            buttonType={buttonType}
                             clickFunctionallity={handleAddRecordStepChange}
                         />
+
                     </div>
 
                 </form>

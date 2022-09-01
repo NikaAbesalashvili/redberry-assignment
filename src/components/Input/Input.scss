@@ -16,6 +16,10 @@
     margin-bottom: .5rem;
 }
 
+.error {
+    color: u.$errorRed;
+}
+
 .input {
     margin-bottom: .5rem;
     padding: 1rem .5rem;
@@ -24,9 +28,17 @@
     outline: none;
 }
 
+.error-input {
+    border-color: u.$errorRed;
+}
+
 .input-hint {
     margin-bottom: .75rem;
     font-size: .875em;
     font-weight: 300;
     color: u.$semiBlack;
+}
+
+.red-hint {
+    color: u.$errorRed
 }

@@ -15,12 +15,19 @@
         display: flex;
     }
 
+    .back-span {
+        font-size: 1.125em;
+        color: u.$blue;
+        cursor: pointer;
+    }
+
     .fend {
         justify-content: flex-end;
     }
 
     .space-between {
         justify-content: space-between;
+        align-items: center;
     }
 
 }

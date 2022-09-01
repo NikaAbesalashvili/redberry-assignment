@@ -7,25 +7,26 @@ const Select = ({
     handleSelectChange,
     selectedOption,
     name,
+    error = null,
 }) => {
 
     const {
         newSelectedOption,
         dropdownExpanded,
-        handleDropdownButton,
+        handleDropDown,
         handleSelect,
     } = useSelect();
 
     return (
-        <div className='dropdown' >
+        <div className={`dropdown ${error && 'red-border'}`} >
 
-            <div className='main-area' >
+            <div className='main-area' onClick={handleDropDown} >
                 <h2 className='selected-option' >
                     {newSelectedOption ? newSelectedOption : selectedOption}
                 </h2>
                 <button
                     className='dropdown-button'
-                    onClick={handleDropdownButton}
+                    onClick={handleDropDown}
                     type='button'
                 >
                     {dropdownExpanded ? (
@@ -43,7 +44,7 @@ const Select = ({
                             <h2
                                 className='team-option'
                                 key={option.id}
-                                onClick={() => handleSelect(option.id, option.name, name, handleSelectChange)}
+                                onClick={() => handleSelect(option.id, option.name, option.name, name, handleSelectChange)}
                             >
                                 {option.name}
                             </h2>

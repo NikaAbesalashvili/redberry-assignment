@@ -1,3 +1,5 @@
+@use '../../scss/util' as u;
+
 .radio-buttons {
     margin-bottom: 1rem;
     display: flex;
@@ -16,6 +18,13 @@
         width: 100%;
         font-size: 1.125em;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .radio-text-error {
+        color: u.$errorRed;
     }
     
     .radio-input {

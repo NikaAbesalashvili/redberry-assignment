@@ -35,12 +35,25 @@
         color: u.$darkBlue;
     }
 
+    .image-text-error {
+        color: u.$errorRed;
+    }
+
     .laptop-image-input {
         display: none;
+    }
+
+    .exc-icon {
+        margin-top: 1rem;
     }
 
     .laptop-image {
         width: 100%;
         border-radius: inherit;
     }
+}
+
+.image-error {
+    border-color: u.$errorRed;
+    background-color: u.$lightPink;
 }

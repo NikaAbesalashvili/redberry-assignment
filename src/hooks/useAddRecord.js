@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTeams, usePositions, useLaptopBrands, useLaptopCPUs } from '../context';
-import { convertImageToBase64 } from '../helpers';
+import { convertImageToBase64, extractLaptopInfo, extractUserInfo } from '../helpers';
+import { useValidations } from './useValidations';
+import { createLaptop } from '../api';
 
 const TOKEN = process.env.REACT_APP_API_TOKEN;
 
 export const useAddRecord = () => {
-
-    const [addRecordStep, setAddRecordStep] = useState(1);
 
     const [recordData, setRecordData] = useState({
         name: '',
@@ -29,11 +29,22 @@ export const useAddRecord = () => {
         laptop_purchase_date: '',
         laptop_price: '',
     });
+    const [imageToDisplay, setImageToDisplay] = useState(''); 
 
     const { teams, loadTeams } = useTeams();
     const { positions, loadPositions } = usePositions();
     const { laptopBrands, loadLaptopBrands } = useLaptopBrands() 
     const { laptopCPUs, loadLaptopCPUs } = useLaptopCPUs();
+
+    const {
+        errors,
+        laptopErrors,
+        addRecordStep,
+        buttonType,
+        validateUserInfo,
+        validateLaptopInfo,
+        decreaseStep,
+    } = useValidations();
 
     const navigate = useNavigate()
 
@@ -46,7 +57,7 @@ export const useAddRecord = () => {
 
     const handleBackButtonClick = () => {
         if(addRecordStep === 1) navigate('/')
-        else setAddRecordStep((prevStep) => prevStep - 1);
+        else decreaseStep()
     };
 
     const handleChange = (event) => {
@@ -65,31 +76,49 @@ export const useAddRecord = () => {
     };
 
     const handleAddRecordStepChange = () => {
-        if(addRecordStep === 1) setAddRecordStep((prevStep) => prevStep + 1);
+        if(addRecordStep === 1) {
+            const userInfo = extractUserInfo(recordData);
+            validateUserInfo(userInfo);
+        } else if(addRecordStep === 2) {
+            const laptopInfo = extractLaptopInfo(recordData);
+            validateLaptopInfo(laptopInfo);
+        }
     };
 
     const handleLaptopImageUpload = async (event) => {
         const image = event.target.files[0];
         const imageBase64 = await convertImageToBase64(image);
 
+        setImageToDisplay(imageBase64);
+        
+
         setRecordData((prevData) => ({
             ...prevData,
-            laptop_image: imageBase64
+            laptop_image: `https://pcfy.redberryinternship.ge/storage/images/${imageBase64}`
         }));
+    };
+
+    const addLaptop = async () => {
+        const response = await createLaptop(recordData);
+        console.log(response);
     };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        console.log('FORM SUBMITED');
+        addLaptop();
     };
 
     return {
         addRecordStep,
+        imageToDisplay,
         recordData,
         teams,
         positions,
         laptopBrands,
         laptopCPUs,
+        errors,
+        laptopErrors,
+        buttonType,
         handleBackButtonClick,
         handleChange,
         handleSelectChange,

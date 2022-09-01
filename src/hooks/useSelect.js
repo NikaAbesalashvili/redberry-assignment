@@ -5,20 +5,21 @@ export const useSelect = () => {
     const [dropdownExpanded, setDropdownExpanded] = useState(false);
     const [newSelectedOption, setNewSelectedOption] = useState('')
 
-    const handleDropdownButton = () => {
+    const handleDropDown = () => {
         setDropdownExpanded((prevState) => !prevState);
     };
 
-    const handleSelect = (optionId, optionValue, name, handleSelectChange) => {
+    const handleSelect = (optionId, selectValue = null, optionValue, name, handleSelectChange) => {
         setDropdownExpanded((prevState) => !prevState);
         setNewSelectedOption(optionValue);
-        handleSelectChange(name, optionId);
+        if(name === 'laptop_cpu') handleSelectChange(name, selectValue);
+        else handleSelectChange(name, optionId);
     };
   
     return {
         dropdownExpanded,
         newSelectedOption,
-        handleDropdownButton,
+        handleDropDown,
         handleSelect,
     };
 };
