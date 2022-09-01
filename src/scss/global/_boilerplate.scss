@@ -1,9 +1,15 @@
+@font-face {
+    font-family: HelveticaNeue;
+    src: url('../../../public/fonts/HelveticaNeue.ttc');
+}
+
 html,
 body,
 #root {
     height: 100%;
     width: 100%;
     font-size: 100%;
+    font-family: 'HelveticaNeue', sans-serif;
 }
 
 *, *::before, *::after {

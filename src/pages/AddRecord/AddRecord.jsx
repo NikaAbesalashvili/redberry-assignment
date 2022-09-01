@@ -1,4 +1,5 @@
 import { useAddRecord } from '../../hooks';
+import { useRecordData } from '../../context';
 import { Header, Input, Select, Button, UploadImage, RadioButtons } from '../../components';
 
 import './AddRecord.scss';
@@ -7,9 +8,7 @@ const AddRecord = () => {
 
     const {
         buttonType,
-        imageToDisplay,
         addRecordStep,
-        recordData,
         teams,
         positions,
         laptopBrands,
@@ -17,12 +16,17 @@ const AddRecord = () => {
         errors,
         laptopErrors,
         handleBackButtonClick,
-        handleChange,
-        handleSelectChange,
         handleAddRecordStepChange,
         handleFormSubmit,
-        handleLaptopImageUpload,
     } = useAddRecord();
+
+    const {
+        recordData,
+        imageToDisplay,
+        handleChange,
+        handleCustomSelectChange,
+        handleLaptopImageUpload,
+    } = useRecordData();
 
     return (
         <>
@@ -62,7 +66,7 @@ const AddRecord = () => {
                         {teams.length > 0 && (
                             <Select
                                 options={teams}
-                                handleSelectChange={handleSelectChange}
+                                handleSelectChange={handleCustomSelectChange}
                                 selectedOption='თიმი'
                                 name='team_id'
                                 error={errors.teamError}
@@ -72,7 +76,7 @@ const AddRecord = () => {
                         {positions.length > 1 && (
                             <Select
                                 options={positions}
-                                handleSelectChange={handleSelectChange}
+                                handleSelectChange={handleCustomSelectChange}
                                 selectedOption='პოზიცია'
                                 name='position_id'
                                 error={errors.positionError}
@@ -126,7 +130,7 @@ const AddRecord = () => {
 
                             <Select                 
                                 options={laptopBrands}
-                                handleSelectChange={handleSelectChange}
+                                handleSelectChange={handleCustomSelectChange}
                                 selectedOption='ლეპტოპის ბრენდი'
                                 name='laptop_brand_id'
                                 error={laptopErrors.laptopBrandError}
@@ -134,7 +138,7 @@ const AddRecord = () => {
 
                             <Select                 
                                 options={laptopCPUs}
-                                handleSelectChange={handleSelectChange}
+                                handleSelectChange={handleCustomSelectChange}
                                 selectedOption='CPU'
                                 name='laptop_cpu'
                                 error={laptopErrors.laptopCPUError}
