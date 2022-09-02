@@ -20,7 +20,7 @@ const Select = ({
     return (
         <div className={`dropdown ${error && 'red-border'}`} >
 
-            <div className='main-area' onClick={handleDropDown} >
+            <div className='main-area' >
                 <h2 className='selected-option' >
                     {newSelectedOption ? newSelectedOption : selectedOption}
                 </h2>

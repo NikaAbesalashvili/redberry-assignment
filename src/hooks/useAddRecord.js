@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecordData, useTeams, usePositions, useLaptopBrands, useLaptopCPUs } from '../context';
-import { convertImageToBase64, extractLaptopInfo, extractUserInfo } from '../helpers';
+import { extractLaptopInfo, extractUserInfo } from '../helpers';
 import { useValidations } from './useValidations';
 import { createLaptop } from '../api';
 
-const TOKEN = process.env.REACT_APP_API_TOKEN;
-
 export const useAddRecord = () => {
+
+    const [success, setSuccess] = useState(false);
 
     const { recordData } = useRecordData();
     const { teams, loadTeams } = useTeams();
@@ -51,7 +51,11 @@ export const useAddRecord = () => {
 
     const addLaptop = async () => {
         const response = await createLaptop(recordData);
-        console.log(response);
+        const { status } = response;
+        if(status === 200) {
+            setSuccess((prevState) => !prevState);
+            localStorage.clear();
+        }
     };
 
     const handleFormSubmit = (event) => {
@@ -69,6 +73,7 @@ export const useAddRecord = () => {
         errors,
         laptopErrors,
         buttonType,
+        success,
         handleBackButtonClick,
         handleAddRecordStepChange,
         handleFormSubmit,

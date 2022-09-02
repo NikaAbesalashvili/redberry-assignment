@@ -1,0 +1,44 @@
+@use '../../scss/util' as u;
+
+.record {
+    padding: .5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background-color: u.$lightWhite;
+    border: 1px solid u.$blueWhite;
+    border-radius: .5rem;
+
+    .laptop-image {
+        border-radius: inherit;
+        width: 40%;
+    }
+
+    .info {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .user-name-surname,
+    .see-more-link {
+        font-size: .875em;
+    }
+    
+    .user-name-surname {
+        font-weight: 500;
+    }
+
+    .laptop-name {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .see-more-link {
+        font-weight: 400;
+        color: u.$darkBlue;
+    }
+
+}

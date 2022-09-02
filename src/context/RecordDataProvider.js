@@ -74,7 +74,7 @@ export const RecordDataProvider = ({ children }) => {
 
         setRecordData((prevData) => ({
             ...prevData,
-            laptop_image: imageBase64,
+            laptop_image: image,
         }));
     };
     
