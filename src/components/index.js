@@ -6,3 +6,4 @@ export { default as UploadImage } from './UploadImage/UploadImage';
 export { default as RadioButtons } from './RadioButtons/RadioButtons';
 export { default as Success } from './Success/Success';
 export { default as Record } from './Record/Record';
+export { default as InfoText } from './InfoText/InfoText';

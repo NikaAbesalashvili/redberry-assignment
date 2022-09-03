@@ -1,5 +1,11 @@
 import { useAddRecord } from '../../hooks';
-import { useRecordData } from '../../context';
+import {
+    useRecordData,
+    useTeams,
+    usePositions,
+    useLaptopBrands,
+    useLaptopCPUs 
+} from '../../context';
 import {
     Header,
     Input,
@@ -17,10 +23,6 @@ const AddRecord = () => {
     const {
         buttonType,
         addRecordStep,
-        teams,
-        positions,
-        laptopBrands,
-        laptopCPUs,
         errors,
         laptopErrors,
         success,
@@ -34,10 +36,17 @@ const AddRecord = () => {
     const {
         recordData,
         imageToDisplay,
+        uploadedImageName,
+        uploadedImageSize,
         handleChange,
         handleCustomSelectChange,
         handleLaptopImageUpload,
     } = useRecordData();
+
+    const { teams } = useTeams();
+    const { positions } = usePositions();
+    const { laptopBrands } = useLaptopBrands();
+    const { laptopCPUs } = useLaptopCPUs();
 
     return (
         <>
@@ -55,7 +64,7 @@ const AddRecord = () => {
 
                         <form className='add-record-form' onSubmit={handleFormSubmit} >
                             {addRecordStep === 1 ? (
-                                <>
+                                <div className='user-info-box' >
 
                                     <Input
                                         labelText='სახელი'
@@ -125,127 +134,143 @@ const AddRecord = () => {
                                         error={errors.phoneNumberError}
                                     />
 
-                                </>
+                                </div>
                             ) : (
                                 <>
+                                    <div className='boxes' >
 
-                                    <UploadImage
-                                        handleLaptopImageupload={handleLaptopImageUpload}
-                                        laptopImage={imageToDisplay}
-                                        error={laptopErrors.laptopImageError}
-                                    />
+                                        <div className="box">
 
-                                    <Input
-                                        labelText='ლეპტოპის სახელი'
-                                        labelForInputId='laptop_name'
-                                        inputPlaceholder='HP'
-                                        inputName='laptop_name'
-                                        inputValue={recordData.laptop_name}
-                                        inputHint='ლათინური ასოები, ციფრები, !@#$%^&*()_+='
-                                        handleInputChange={handleChange}
-                                        error={laptopErrors.laptopNameError}
-                                    />
+                                            <UploadImage
+                                                handleLaptopImageupload={handleLaptopImageUpload}
+                                                laptopImage={imageToDisplay}
+                                                error={laptopErrors.laptopImageError}
+                                                uploadedImageName={uploadedImageName}
+                                                uploadedImageSize={uploadedImageSize}
+                                            />
 
-                                    <Select                 
-                                        options={laptopBrands}
-                                        handleSelectChange={handleCustomSelectChange}
-                                        selectedOption={`${recordData.laptop_brand_id ? laptopBrands[recordData.laptop_brand_id - 1] : 'ლეპტოპის ბრენდი'}`}
-                                        name='laptop_brand_id'
-                                        error={laptopErrors.laptopBrandError}
-                                    />
+                                            <Input
+                                                labelText='ლეპტოპის სახელი'
+                                                labelForInputId='laptop_name'
+                                                inputPlaceholder='HP'
+                                                inputName='laptop_name'
+                                                inputValue={recordData.laptop_name}
+                                                inputHint='ლათინური ასოები, ციფრები, !@#$%^&*()_+='
+                                                handleInputChange={handleChange}
+                                                error={laptopErrors.laptopNameError}
+                                            />
 
-                                    <Select                 
-                                        options={laptopCPUs}
-                                        handleSelectChange={handleCustomSelectChange}
-                                        selectedOption='CPU'
-                                        name='laptop_cpu'
-                                        error={laptopErrors.laptopCPUError}
-                                    />
+                                            <Select                 
+                                                options={laptopBrands}
+                                                handleSelectChange={handleCustomSelectChange}
+                                                selectedOption={`${recordData.laptop_brand_id ? laptopBrands[recordData.laptop_brand_id - 1] : 'ლეპტოპის ბრენდი'}`}
+                                                name='laptop_brand_id'
+                                                error={laptopErrors.laptopBrandError}
+                                            />
 
-                                    <Input
-                                        labelText='CPU-ს ბირთვი'
-                                        labelForInputId='laptop_cpu_cores'
-                                        inputPlaceholder='14'
-                                        inputName='laptop_cpu_cores'
-                                        inputValue={recordData.laptop_cpu_cores}
-                                        inputHint='მხოლოდ ციფრები'
-                                        handleInputChange={handleChange}
-                                        inputType='number'
-                                        min={1}
-                                        error={laptopErrors.laptopCPUCoresError}
-                                    />
+                                        </div>
 
-                                    <Input
-                                        labelText='CPU-ს ნაკადი'
-                                        labelForInputId='laptop_cpu_threads'
-                                        inputPlaceholder='14'
-                                        inputName='laptop_cpu_threads'
-                                        inputValue={recordData.laptop_cpu_threads}
-                                        inputHint='მხოლოდ ციფრები'
-                                        handleInputChange={handleChange}
-                                        inputType='number'
-                                        min={1}
-                                        error={laptopErrors.laptopCPUThreadsError}
-                                    />
+                                        <div className="box">
 
-                                    <Input
-                                        labelText='ლეპტოპის RAM (GB)'
-                                        labelForInputId='laptop_ram'
-                                        inputPlaceholder='16'
-                                        inputName='laptop_ram'
-                                        inputValue={recordData.laptop_ram}
-                                        inputHint='მხოლოდ ციფრები'
-                                        handleInputChange={handleChange}
-                                        inputType='number'
-                                        min={1}
-                                        error={laptopErrors.laptopRAMError}
-                                    />
+                                            <Select                 
+                                                options={laptopCPUs}
+                                                handleSelectChange={handleCustomSelectChange}
+                                                selectedOption='CPU'
+                                                name='laptop_cpu'
+                                                error={laptopErrors.laptopCPUError}
+                                            />
 
-                                    <RadioButtons
-                                        radioGroupText='მეხსიერების ტიპი'
-                                        firstValue='SSD'
-                                        firstOption='SSD'
-                                        secondValue='HDD'
-                                        secondOption='HDD'
-                                        inputName='laptop_hard_drive_type'
-                                        handleRadioButtonChange={handleChange}
-                                        error={laptopErrors.laptopHarddriveError}
-                                    />
-                                    
-                                    <Input
-                                        labelText='შეძენის რიცხვი (არჩევითი)'
-                                        labelForInputId='laptop_purchase_date'
-                                        inputPlaceholder='დდ / თთ / წწწწ'
-                                        inputName='laptop_purchase_date'
-                                        inputValue={recordData.laptop_purchase_date}
-                                        handleInputChange={handleChange}
-                                        inputType='date'
-                                    />
+                                            <Input
+                                                labelText='CPU-ს ბირთვი'
+                                                labelForInputId='laptop_cpu_cores'
+                                                inputPlaceholder='14'
+                                                inputName='laptop_cpu_cores'
+                                                inputValue={recordData.laptop_cpu_cores}
+                                                inputHint='მხოლოდ ციფრები'
+                                                handleInputChange={handleChange}
+                                                inputType='number'
+                                                min={1}
+                                                error={laptopErrors.laptopCPUCoresError}
+                                            />
 
-                                    <Input
-                                        labelText='ლეპტოპის ფასი'
-                                        labelForInputId='laptop_price'
-                                        inputPlaceholder='0000'
-                                        inputName='laptop_price'
-                                        inputValue={recordData.laptop_price}
-                                        inputHint='მხოლოდ რიცხვები'
-                                        handleInputChange={handleChange}
-                                        inputType='number'
-                                        min={1}
-                                        error={laptopErrors.laptopPriceError}
-                                    />
+                                            <Input
+                                                labelText='CPU-ს ნაკადი'
+                                                labelForInputId='laptop_cpu_threads'
+                                                inputPlaceholder='14'
+                                                inputName='laptop_cpu_threads'
+                                                inputValue={recordData.laptop_cpu_threads}
+                                                inputHint='მხოლოდ ციფრები'
+                                                handleInputChange={handleChange}
+                                                inputType='number'
+                                                min={1}
+                                                error={laptopErrors.laptopCPUThreadsError}
+                                            />
 
-                                    <RadioButtons
-                                        radioGroupText='ლეპტოპის მდგომარეობა'
-                                        firstValue='new'
-                                        firstOption='ახალი'
-                                        secondValue='used'
-                                        secondOption='მეორადი'
-                                        inputName='laptop_state'
-                                        handleRadioButtonChange={handleChange}
-                                        error={laptopErrors.laptopStateError}
-                                    />
+                                            <Input
+                                                labelText='ლეპტოპის RAM (GB)'
+                                                labelForInputId='laptop_ram'
+                                                inputPlaceholder='16'
+                                                inputName='laptop_ram'
+                                                inputValue={recordData.laptop_ram}
+                                                inputHint='მხოლოდ ციფრები'
+                                                handleInputChange={handleChange}
+                                                inputType='number'
+                                                min={1}
+                                                error={laptopErrors.laptopRAMError}
+                                            />
 
+                                            <RadioButtons
+                                                radioGroupText='მეხსიერების ტიპი'
+                                                firstValue='SSD'
+                                                firstOption='SSD'
+                                                secondValue='HDD'
+                                                secondOption='HDD'
+                                                inputName='laptop_hard_drive_type'
+                                                handleRadioButtonChange={handleChange}
+                                                error={laptopErrors.laptopHarddriveError}
+                                            />
+
+                                        </div>
+
+                                        <div className="box last">
+
+                                            <Input
+                                                labelText='შეძენის რიცხვი (არჩევითი)'
+                                                labelForInputId='laptop_purchase_date'
+                                                inputPlaceholder='დდ / თთ / წწწწ'
+                                                inputName='laptop_purchase_date'
+                                                inputValue={recordData.laptop_purchase_date}
+                                                handleInputChange={handleChange}
+                                                inputType='date'
+                                            />
+
+                                            <Input
+                                                labelText='ლეპტოპის ფასი'
+                                                labelForInputId='laptop_price'
+                                                inputPlaceholder='0000'
+                                                inputName='laptop_price'
+                                                inputValue={recordData.laptop_price}
+                                                inputHint='მხოლოდ რიცხვები'
+                                                handleInputChange={handleChange}
+                                                inputType='number'
+                                                min={1}
+                                                error={laptopErrors.laptopPriceError}
+                                            />
+
+                                            <RadioButtons
+                                                radioGroupText='ლეპტოპის მდგომარეობა'
+                                                firstValue='new'
+                                                firstOption='ახალი'
+                                                secondValue='used'
+                                                secondOption='მეორადი'
+                                                inputName='laptop_state'
+                                                handleRadioButtonChange={handleChange}
+                                                error={laptopErrors.laptopStateError}
+                                            />
+
+                                        </div>
+
+                                    </div>
                                 </>
                             )}
 
@@ -261,6 +286,7 @@ const AddRecord = () => {
                                 )}
                                 
                                 <Button
+                                    buttonSize='small'
                                     buttonText={`${addRecordStep === 1 ? 'შემდეგი' : 'დამახსოვრება'}`}
                                     buttonType={buttonType}
                                     clickFunctionallity={handleAddRecordStepChange}

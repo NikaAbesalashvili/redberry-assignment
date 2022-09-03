@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecordData, useTeams, usePositions, useLaptopBrands, useLaptopCPUs } from '../context';
+import { useRecordData } from '../context';
 import { extractLaptopInfo, extractUserInfo } from '../helpers';
 import { useValidations } from './useValidations';
 import { createLaptop } from '../api';
@@ -11,10 +11,6 @@ export const useAddRecord = () => {
     const [optionsFilter, setOptionsFilter] = useState('');
 
     const { recordData } = useRecordData();
-    const { teams, loadTeams } = useTeams();
-    const { positions, loadPositions } = usePositions();
-    const { laptopBrands, loadLaptopBrands } = useLaptopBrands() 
-    const { laptopCPUs, loadLaptopCPUs } = useLaptopCPUs();
 
     const {
         errors,
@@ -28,12 +24,6 @@ export const useAddRecord = () => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        loadTeams();
-        loadPositions();
-        loadLaptopBrands();
-        loadLaptopCPUs();
-    }, []);
 
     const handleBackButtonClick = () => {
         if(addRecordStep === 1) navigate('/')
@@ -71,10 +61,6 @@ export const useAddRecord = () => {
     return {
         addRecordStep,
         recordData,
-        teams,
-        positions,
-        laptopBrands,
-        laptopCPUs,
         errors,
         laptopErrors,
         buttonType,

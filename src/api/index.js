@@ -15,4 +15,4 @@ export const createLaptop = (laptopData) => API.post('/laptop/create', laptopDat
     }
 });
 export const fetchAllLAptops = () => API.get(`/laptops?token=${TOKEN}`);
-export const fetchLaptop = (laptopID) => API.get(`/laptop/${laptopID}`);
+export const fetchRecord = (recordID) => API.get(`/laptop/${recordID}?token=${TOKEN}`);

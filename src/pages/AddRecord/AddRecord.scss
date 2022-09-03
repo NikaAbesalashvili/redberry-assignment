@@ -4,14 +4,42 @@
     background-color: u.$lightGrey;
     
     .add-record-form {
-        padding: 2rem .75rem;
-        background-color: u.$white;
         border-radius: .85rem .85rem 0 0;
         display: flex;
         flex-direction: column;
+
+        .user-info-box {
+            display: flex;
+            flex-direction: column;
+            padding: 0 .75rem;
+            background-color: u.$white;
+            border-radius: inherit;
+        }
+
+        .boxes {
+            background-color: transparent;
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+
+            .box {
+                padding: 2rem .75rem;
+                border-radius: .85rem;
+                background-color: u.$white;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .last {
+                border-radius: .85rem .85rem 0 0;
+            }
+        }
+
     }
 
     .form-buttons {
+        padding: 2rem .75rem;
+        background-color: u.$white;
         display: flex;
     }
 

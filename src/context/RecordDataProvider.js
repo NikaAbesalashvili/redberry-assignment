@@ -34,6 +34,8 @@ export const useRecordData = () => {
 export const RecordDataProvider = ({ children }) => {
     
     const [imageToDisplay, setImageToDisplay] = useState('');
+    const [uploadedImageName, setUploadedImageName] = useState('');
+    const [uploadedImageSize, setUploadedImageSize] = useState('');
     const [recordData, setRecordData] = useState(() => {
         const localStorageData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PREFIX));
         if(localStorageData) {
@@ -68,13 +70,23 @@ export const RecordDataProvider = ({ children }) => {
     const handleLaptopImageUpload = async (event) => {
         const image = event.target.files[0];
         const imageBase64 = await convertImageToBase64(image);
+        setUploadedImageName(image.name);
+        setUploadedImageSize(image.size / 10 ** 6)
 
         setImageToDisplay(imageBase64);
-        
-
         setRecordData((prevData) => ({
             ...prevData,
             laptop_image: image,
+        }));
+    };
+
+    const handleImageReupload = () => {
+        setImageToDisplay('');
+        setUploadedImageName('');
+        setUploadedImageSize('');
+        setRecordData((prevData) => ({
+            ...prevData,
+            laptop_image: ''
         }));
     };
     
@@ -83,9 +95,12 @@ export const RecordDataProvider = ({ children }) => {
             value={{
                 recordData,
                 imageToDisplay,
+                uploadedImageName,
+                uploadedImageSize,
                 handleChange,
                 handleCustomSelectChange,
                 handleLaptopImageUpload,
+                handleImageReupload,
             }}
         >
             { children }

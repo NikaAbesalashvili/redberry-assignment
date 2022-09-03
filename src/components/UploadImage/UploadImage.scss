@@ -1,9 +1,5 @@
 @use '../../scss/util' as u;
 
-.vertical-padding {
-    padding: 5rem 0;
-}
-
 .upload-image-container {
     margin-bottom: 2rem;
     display: flex;
@@ -53,7 +49,42 @@
     }
 }
 
+.vertical-padding {
+    padding: 5rem 0;
+}
+
 .image-error {
     border-color: u.$errorRed;
     background-color: u.$lightPink;
+}
+
+.border-less-white {
+    border: 0;
+    background-color: u.$white;
+
+    .laptop-image {
+        border-radius: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    .reupload {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .left-side {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+
+            .uploaded-image-name,
+            .uploaded-image-size {
+                font-size: .75em;
+                font-weight: 400;
+            }
+
+        }
+    }
+
 }

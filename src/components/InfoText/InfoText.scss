@@ -1,0 +1,21 @@
+@use '../../scss/util' as u;
+
+.info-text {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .helper-text,
+    .info-text {
+        font-size: .875em;
+    }
+
+    .helper-text {
+        font-weight: 500;
+    }
+
+    .main-text {
+        font-weight: 400;
+        color: u.$darkestGray;
+    }
+
+}

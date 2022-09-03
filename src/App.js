@@ -6,7 +6,7 @@ import {
 	LaptopBrandProvider,
 	LaptopCPUsProvider,
 } from './context'
-import { Landing, AddRecord, Records } from "./pages";
+import { Landing, AddRecord, Records, RecordDedails } from "./pages";
 
 const App = () => {
 
@@ -21,6 +21,7 @@ const App = () => {
 									<Route path='/' element={<Landing />} />
 									<Route path='/add-record' element={<AddRecord />} />
 									<Route path='/records' element={<Records />} />
+									<Route path='/records/:recordId' element={<RecordDedails />} />
 								</Routes>
 							</TeamsProvider>
 						</PositionsProvider>

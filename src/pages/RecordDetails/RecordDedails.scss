@@ -1,0 +1,29 @@
+@use '../../scss/util' as u;
+
+.laptop-info {
+    padding: .8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .user-info,
+    .laptop-description,
+    .additional-laptop-info {
+        padding-bottom: 2rem;
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        border-bottom: .8px solid u.$darkestGray;
+    }
+
+    .laptop-description,
+    .additional-laptop-info {
+        margin-top: 2rem;
+    }
+
+    .additional-laptop-info {
+        border: 0;
+    }
+
+}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { fetchPositions } from '../api';
 
 const PositionsContext = React.createContext();
@@ -11,6 +11,10 @@ export const PositionsProvider = ({ children }) => {
 
     const [positions, setPositions] = useState([]);
 
+    useEffect(() => {
+        loadPositions();
+    }, [])
+
     const loadPositions = async () => {
         const apiData = await fetchPositions();
         const { data } = apiData.data;
@@ -18,7 +22,7 @@ export const PositionsProvider = ({ children }) => {
     };
 
     return (
-        <PositionsContext.Provider value={{ positions, loadPositions }} >
+        <PositionsContext.Provider value={{ positions }} >
             { children }
         </PositionsContext.Provider>
     );
