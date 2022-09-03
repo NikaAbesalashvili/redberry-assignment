@@ -9,11 +9,12 @@ export const useSelect = () => {
         setDropdownExpanded((prevState) => !prevState);
     };
 
-    const handleSelect = (optionId, selectValue = null, optionValue, name, handleSelectChange) => {
+    const handleSelect = (optionId, selectValue = null, optionValue, name, handleSelectChange, chooseOptionsFilter) => {
         setDropdownExpanded((prevState) => !prevState);
         setNewSelectedOption(optionValue);
         if(name === 'laptop_cpu') handleSelectChange(name, selectValue);
         else handleSelectChange(name, optionId);
+        chooseOptionsFilter?.(optionId);
     };
   
     return {

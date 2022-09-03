@@ -8,6 +8,7 @@ import { createLaptop } from '../api';
 export const useAddRecord = () => {
 
     const [success, setSuccess] = useState(false);
+    const [optionsFilter, setOptionsFilter] = useState('');
 
     const { recordData } = useRecordData();
     const { teams, loadTeams } = useTeams();
@@ -63,6 +64,10 @@ export const useAddRecord = () => {
         addLaptop();
     };
 
+    const chooseOptionsFilter = (choosedFilter) => {
+        setOptionsFilter(choosedFilter);
+    };
+
     return {
         addRecordStep,
         recordData,
@@ -74,8 +79,10 @@ export const useAddRecord = () => {
         laptopErrors,
         buttonType,
         success,
+        optionsFilter,
         handleBackButtonClick,
         handleAddRecordStepChange,
         handleFormSubmit,
+        chooseOptionsFilter,
     };
 };

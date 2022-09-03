@@ -14,7 +14,7 @@ const Records = () => {
                 backButtonFunctionallity={handleBackButton}
             />
             <section className='records' >
-                {records.length > 0 ? (
+                {records.length > 0 && (
                     records.map((record) => (
                         <Record
                             laptopName={record.laptop.name}
@@ -25,8 +25,6 @@ const Records = () => {
                             key={record.laptop.id}
                         />
                     ))
-                ) : (
-                    <h1>NO RECORDS</h1>
                 )}
             </section>
         </>

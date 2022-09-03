@@ -24,9 +24,11 @@ const AddRecord = () => {
         errors,
         laptopErrors,
         success,
+        optionsFilter,
         handleBackButtonClick,
         handleAddRecordStepChange,
         handleFormSubmit,
+        chooseOptionsFilter,
     } = useAddRecord();
 
     const {
@@ -81,9 +83,10 @@ const AddRecord = () => {
                                         <Select
                                             options={teams}
                                             handleSelectChange={handleCustomSelectChange}
-                                            selectedOption='თიმი'
+                                            selectedOption={`${recordData.team_id ? teams[recordData.team_id - 1].name : 'თიმი'}`}
                                             name='team_id'
                                             error={errors.teamError}
+                                            chooseOptionsFilter={chooseOptionsFilter}
                                         />
                                     )}
 
@@ -91,9 +94,10 @@ const AddRecord = () => {
                                         <Select
                                             options={positions}
                                             handleSelectChange={handleCustomSelectChange}
-                                            selectedOption='პოზიცია'
+                                            selectedOption={`${recordData.position_id ? positions[recordData.position_id - 1].name : 'პოზიცია'}`}
                                             name='position_id'
                                             error={errors.positionError}
+                                            optionsFilter={optionsFilter}
                                         />
                                     )}
 
@@ -145,7 +149,7 @@ const AddRecord = () => {
                                     <Select                 
                                         options={laptopBrands}
                                         handleSelectChange={handleCustomSelectChange}
-                                        selectedOption='ლეპტოპის ბრენდი'
+                                        selectedOption={`${recordData.laptop_brand_id ? laptopBrands[recordData.laptop_brand_id - 1] : 'ლეპტოპის ბრენდი'}`}
                                         name='laptop_brand_id'
                                         error={laptopErrors.laptopBrandError}
                                     />

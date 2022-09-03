@@ -33,7 +33,7 @@ export const useRecordData = () => {
 
 export const RecordDataProvider = ({ children }) => {
     
-    const [imageToDisplay, setImageToDisplay] = useState(''); 
+    const [imageToDisplay, setImageToDisplay] = useState('');
     const [recordData, setRecordData] = useState(() => {
         const localStorageData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PREFIX));
         if(localStorageData) {

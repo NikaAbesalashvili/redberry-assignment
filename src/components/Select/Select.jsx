@@ -7,6 +7,8 @@ const Select = ({
     handleSelectChange,
     selectedOption,
     name,
+    optionsFilter = null,
+    chooseOptionsFilter = null,
     error = null,
 }) => {
 
@@ -41,13 +43,25 @@ const Select = ({
                 <div className="container">
                     <div className="expanded">
                         {options.map((option) => (
-                            <h2
-                                className='team-option'
-                                key={option.id}
-                                onClick={() => handleSelect(option.id, option.name, option.name, name, handleSelectChange)}
-                            >
-                                {option.name}
-                            </h2>
+                            (optionsFilter ? (
+                                optionsFilter === option?.team_id && (
+                                    <h2
+                                        className='team-option'
+                                        key={option.id}
+                                        onClick={() => handleSelect(option.id, option.name, option.name, name, handleSelectChange)}
+                                    >
+                                        {option.name}
+                                    </h2>
+                                )
+                            ) : (
+                                <h2
+                                    className='team-option'
+                                    key={option.id}
+                                    onClick={() => handleSelect(option.id, option.name, option.name, name, handleSelectChange, chooseOptionsFilter)}
+                                >
+                                    {option.name}
+                                </h2>
+                            ))
                         ))}
                     </div>
                 </div>
