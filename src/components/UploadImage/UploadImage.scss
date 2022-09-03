@@ -84,6 +84,12 @@
                 font-weight: 400;
             }
 
+            .image-info {
+                display: flex;
+                flex-direction: column;
+                gap: .2rem;
+            }
+
         }
     }
 

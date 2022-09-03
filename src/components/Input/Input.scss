@@ -1,44 +1,50 @@
 @use '../../scss/util' as u;
 
-.input::-webkit-outer-spin-button,
-.input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.input-component {
+    display: flex;
+    flex-direction: column;
+
+    .input::-webkit-outer-spin-button,
+    .input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    .no-arrows {
+        -moz-appearance: none;
+    }
+    
+    .input-label {
+        font-size: 1.125em;
+        font-weight: 500;
+        margin-bottom: .5rem;
+    }
+    
+    .error {
+        color: u.$errorRed;
+    }
+    
+    .input {
+        margin-bottom: .5rem;
+        padding: 1rem .5rem;
+        border-radius: .5rem;
+        border: 1px solid u.$semiBlue;
+        outline: none;
+    }
+    
+    .error-input {
+        border-color: u.$errorRed;
+    }
+    
+    .input-hint {
+        margin-bottom: .75rem;
+        font-size: .875em;
+        font-weight: 300;
+        color: u.$semiBlack;
+    }
+    
+    .red-hint {
+        color: u.$errorRed
+    }
 }
 
-.no-arrows {
-    -moz-appearance: none;
-}
-
-.input-label {
-    font-size: 1.125em;
-    font-weight: 500;
-    margin-bottom: .5rem;
-}
-
-.error {
-    color: u.$errorRed;
-}
-
-.input {
-    margin-bottom: .5rem;
-    padding: 1rem .5rem;
-    border-radius: .5rem;
-    border: 1px solid u.$semiBlue;
-    outline: none;
-}
-
-.error-input {
-    border-color: u.$errorRed;
-}
-
-.input-hint {
-    margin-bottom: .75rem;
-    font-size: .875em;
-    font-weight: 300;
-    color: u.$semiBlack;
-}
-
-.red-hint {
-    color: u.$errorRed
-}

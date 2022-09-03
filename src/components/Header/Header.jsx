@@ -6,6 +6,8 @@ const Header = ({
     headerText,
     headerStep = null,
     backButtonFunctionallity,
+    onUserInfo,
+    onLaptopInfo,
 }) => {
     return (
         <header
@@ -20,6 +22,20 @@ const Header = ({
             <div className="header-texts">
                 <h1 className='header-text' >{headerText}</h1>
                 {headerStep && <h2 className='step-text' >{headerStep}/2</h2>}
+            </div>
+            <div className='controller' >
+                <span
+                    className='controller-span'
+                    onClick={onUserInfo}
+                >
+                    თანამშრომლის ინფო
+                </span>
+                <span
+                    className='controller-span'
+                    onClick={onLaptopInfo}
+                >
+                    ლეპტოპის მახასიათებლები
+                </span>
             </div>
         </header>
     );

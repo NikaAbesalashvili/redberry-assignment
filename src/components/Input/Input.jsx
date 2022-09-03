@@ -13,15 +13,15 @@ const Input = ({
     error = null,
 }) => {
     return (
-        <>
+        <div className='input-component'>
             <label
-                className={`input-label ${error && 'error'}`}
+                className={`input-label ${error ? 'error' : ''}`}
                 htmlFor={labelForInputId}
             >
                     {labelText}
             </label>
             <input
-                className={`input ${inputType === 'number' && 'no-arrows'} ${error && 'error-input'}`}
+                className={`input ${inputType === 'number' ? 'no-arrows' : ''} ${error ? 'error-input' : ''}`}
                 type={inputType}
                 placeholder={inputPlaceholder}
                 name={inputName}
@@ -30,8 +30,8 @@ const Input = ({
                 min={min && min}
                 
             />
-            {inputHint && <p className={`input-hint ${error && 'red-hint'}`} >{inputHint}</p>}
-        </>
+            {inputHint && <p className={`input-hint ${error ? 'red-hint' : ''}`} >{inputHint}</p>}
+        </div>
     );
 };
 

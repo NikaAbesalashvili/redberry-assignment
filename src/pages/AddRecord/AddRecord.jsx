@@ -1,4 +1,5 @@
-import { useAddRecord } from '../../hooks';
+import { useAddRecord, useValidations } from '../../hooks';
+import { extractUserInfo } from '../../helpers';
 import {
     useRecordData,
     useTeams,
@@ -16,6 +17,7 @@ import {
     Success
 } from '../../components';
 
+import redberryLogo from '../../assets/redberry-logo-desktop.png';
 import './AddRecord.scss';
 
 const AddRecord = () => {
@@ -43,10 +45,14 @@ const AddRecord = () => {
         handleLaptopImageUpload,
     } = useRecordData();
 
+    const { validateUserInfo } = useValidations();
+
     const { teams } = useTeams();
     const { positions } = usePositions();
     const { laptopBrands } = useLaptopBrands();
     const { laptopCPUs } = useLaptopCPUs();
+
+    
 
     return (
         <>
@@ -59,34 +65,40 @@ const AddRecord = () => {
                         headerStep={addRecordStep}
                         headerText='თანამშრომლის ინფო'
                         backButtonFunctionallity={handleBackButtonClick}
+                        // onUserInfo={decreaseStep}
+                        onLaptopInfo={() => validateUserInfo(extractUserInfo(recordData))}
                     />
                     <section className='add-record-section' >
 
                         <form className='add-record-form' onSubmit={handleFormSubmit} >
                             {addRecordStep === 1 ? (
                                 <div className='user-info-box' >
+                                    
+                                    <div className="name-surname-box">
 
-                                    <Input
-                                        labelText='სახელი'
-                                        labelForInputId='name'
-                                        inputPlaceholder='გრიშა'
-                                        inputName='name'
-                                        inputValue={recordData.name}
-                                        inputHint='მინიმუმ 2 სიმბოლო, ქართული ასოები'
-                                        handleInputChange={handleChange}
-                                        error={errors.nameError}
-                                    />
+                                        <Input
+                                            labelText='სახელი'
+                                            labelForInputId='name'
+                                            inputPlaceholder='გრიშა'
+                                            inputName='name'
+                                            inputValue={recordData.name}
+                                            inputHint='მინიმუმ 2 სიმბოლო, ქართული ასოები'
+                                            handleInputChange={handleChange}
+                                            error={errors.nameError}
+                                        />
 
-                                    <Input
-                                        labelText='გვარი'
-                                        labelForInputId='surname'
-                                        inputPlaceholder='ბაგრატიონი'
-                                        inputName='surname'
-                                        inputValue={recordData.surname}
-                                        inputHint='მინიმუმ 2 სიმბოლო, ქართული ასოები'
-                                        handleInputChange={handleChange}
-                                        error={errors.surnameError}
-                                    />
+                                        <Input
+                                            labelText='გვარი'
+                                            labelForInputId='surname'
+                                            inputPlaceholder='ბაგრატიონი'
+                                            inputName='surname'
+                                            inputValue={recordData.surname}
+                                            inputHint='მინიმუმ 2 სიმბოლო, ქართული ასოები'
+                                            handleInputChange={handleChange}
+                                            error={errors.surnameError}
+                                        />
+                                        
+                                    </div>
 
                                     {teams.length > 0 && (
                                         <Select
@@ -295,6 +307,8 @@ const AddRecord = () => {
                             </div>
 
                         </form>
+
+                        <img className='redberry-logo-desktop' src={redberryLogo} alt="Redberry Logo" />
 
                     </section>
                 </>

@@ -3,10 +3,23 @@
 .add-record-section {
     background-color: u.$lightGrey;
     
+    @include u.breakpoints(xlarge) {
+        height: 92%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
     .add-record-form {
         border-radius: .85rem .85rem 0 0;
         display: flex;
         flex-direction: column;
+        
+        @include u.breakpoints(xlarge) {
+            width: 70%;
+            border-radius: .85rem;
+        }
 
         .user-info-box {
             display: flex;
@@ -14,6 +27,22 @@
             padding: 0 .75rem;
             background-color: u.$white;
             border-radius: inherit;
+
+            .name-surname-box {
+                display: flex;
+                flex-direction: column;
+
+                @include u.breakpoints(xlarge) {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 3rem;
+                }
+            }
+
+            @include u.breakpoints(xlarge) {
+                padding: 5rem;
+                gap: 1rem;
+            }
         }
 
         .boxes {
@@ -41,6 +70,11 @@
         padding: 2rem .75rem;
         background-color: u.$white;
         display: flex;
+
+        @include u.breakpoints(xlarge) {
+            padding: 0 5rem 2rem 0;
+        }
+
     }
 
     .back-span {
@@ -58,4 +92,12 @@
         align-items: center;
     }
 
+    .redberry-logo-desktop {
+        display: none;
+
+        @include u.breakpoints(xlarge) {
+            margin: 2rem 0;
+            display: inline;
+        }
+    }
 }

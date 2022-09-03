@@ -24,7 +24,12 @@ export const useValidations = () => {
             !userInfo.phone_number.startsWith('+995')
         ) userErros.phoneNumberError = true;
         
-        if(Object.keys(userErros).length === 0) setAddRecordStep((prevStep) => prevStep + 1);
+        if(Object.keys(userErros).length === 0) {
+            setAddRecordStep((prevStep) => {
+                if(prevStep === 1) return 2;
+                return;
+            });
+        }
 
         setErrors(userErros);
     };
@@ -68,13 +73,6 @@ export const useValidations = () => {
         setLaptopErrors(errors);
     };
 
-    const decreaseStep = () => {
-        setAddRecordStep((prevStep) => {
-            if(prevStep === 2) return 1;
-            return
-        });
-    };
-
     return {
         errors,
         laptopErrors,
@@ -82,6 +80,5 @@ export const useValidations = () => {
         buttonType,
         validateUserInfo,
         validateLaptopInfo,
-        decreaseStep,
     };
 };
