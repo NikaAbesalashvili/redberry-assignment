@@ -73,6 +73,12 @@ export const useValidations = () => {
         setLaptopErrors(errors);
     };
 
+    const decreaseStep = () => {
+        setAddRecordStep((prevStep) => {
+            if(addRecordStep === 2) return 1;
+        });
+    };
+
     return {
         errors,
         laptopErrors,
@@ -80,5 +86,6 @@ export const useValidations = () => {
         buttonType,
         validateUserInfo,
         validateLaptopInfo,
+        decreaseStep,
     };
 };

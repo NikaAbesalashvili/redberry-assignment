@@ -6,6 +6,7 @@ const Header = ({
     headerText,
     headerStep = null,
     backButtonFunctionallity,
+    hasNavigation = false,
     onUserInfo,
     onLaptopInfo,
 }) => {
@@ -19,24 +20,28 @@ const Header = ({
             >
                 <FaAngleLeft />
             </button>
-            <div className="header-texts">
+            <div className={`header-texts ${hasNavigation ? 'hidden' : ''}`} >
                 <h1 className='header-text' >{headerText}</h1>
                 {headerStep && <h2 className='step-text' >{headerStep}/2</h2>}
             </div>
-            <div className='controller' >
-                <span
-                    className='controller-span'
-                    onClick={onUserInfo}
-                >
-                    თანამშრომლის ინფო
-                </span>
-                <span
-                    className='controller-span'
-                    onClick={onLaptopInfo}
-                >
-                    ლეპტოპის მახასიათებლები
-                </span>
-            </div>
+            {hasNavigation && (
+
+                <div className='controller' >
+                    <span
+                        className='controller-span'
+                        onClick={onUserInfo}
+                    >
+                        თანამშრომლის ინფო
+                    </span>
+                    <span
+                        className='controller-span'
+                        onClick={onLaptopInfo}
+                    >
+                        ლეპტოპის მახასიათებლები
+                    </span>
+                </div>
+
+            )}
         </header>
     );
 };

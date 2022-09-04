@@ -6,6 +6,30 @@
     flex-direction: column;
     align-items: center;
 
+    @include u.breakpoints(xlarge) {
+        margin: auto;
+        width: 50%;
+    }
+
+    .image-user-info {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        border-bottom: .8px solid u.$darkestGray;
+
+        @include u.breakpoints(xlarge) {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .record-image {
+            @include u.breakpoints(xlarge) {
+                width: 50%;
+            }
+        }
+    }
+
     .user-info,
     .laptop-description,
     .additional-laptop-info {
@@ -15,6 +39,19 @@
         gap: 1rem;
         flex-direction: column;
         border-bottom: .8px solid u.$darkestGray;
+
+        @include u.breakpoints(xlarge) {
+            gap: 2rem;
+        }
+    }
+
+    .user-info {
+        border: none;
+        width: 100%;
+
+        @include u.breakpoints(xlarge) {
+            width: fit-content;
+        }
     }
 
     .laptop-description,
@@ -22,8 +59,33 @@
         margin-top: 2rem;
     }
 
+    .laptop-description {
+        @include u.breakpoints(xlarge) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .laptop-main-info {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .cpu-info {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .laptop-main-info,
+    .cpu-info {
+        @include u.breakpoints(xlarge) {
+            gap: 2rem;
+        }
+    }
+
     .additional-laptop-info {
         border: 0;
     }
-
 }

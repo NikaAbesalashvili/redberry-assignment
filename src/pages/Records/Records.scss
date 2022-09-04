@@ -1,7 +1,18 @@
+@use '../../scss/util' as u;
+
 .records {
     padding: .8rem;
     display: flex;
     gap: .8rem;
     flex-direction: column;
     align-items: center;
+
+    @include u.breakpoints(xlarge) {
+        margin: auto;
+        width: 65%;
+        display: grid;
+        gap: 5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }

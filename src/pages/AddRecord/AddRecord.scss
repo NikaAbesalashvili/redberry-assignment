@@ -51,12 +51,20 @@
             gap: 1rem;
             flex-direction: column;
 
+            @include u.breakpoints(xlarge) {
+                gap: 0;
+            }
+
             .box {
                 padding: 2rem .75rem;
                 border-radius: .85rem;
                 background-color: u.$white;
                 display: flex;
                 flex-direction: column;
+
+                @include u.breakpoints(xlarge) {
+                    padding: 2rem 10rem;
+                }
             }
 
             .last {
@@ -72,7 +80,7 @@
         display: flex;
 
         @include u.breakpoints(xlarge) {
-            padding: 0 5rem 2rem 0;
+            padding: 0 10rem 2rem 10rem;
         }
 
     }

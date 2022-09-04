@@ -20,6 +20,10 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+
+        @include u.breakpoints(xlarge) {
+            gap: 2rem;
+        }
     }
 
     .user-name-surname,
@@ -31,6 +35,13 @@
         font-weight: 500;
     }
 
+    .user-name-surname,
+    .laptop-name  {
+        @include u.breakpoints(xlarge) {
+            font-size: 1.1255em;
+        }
+    }
+
     .laptop-name {
         font-size: 1em;
         font-weight: 400;
@@ -39,6 +50,10 @@
     .see-more-link {
         font-weight: 400;
         color: u.$darkBlue;
+
+        @include u.breakpoints(xlarge) {
+            font-size: 1em;
+        }
     }
 
 }

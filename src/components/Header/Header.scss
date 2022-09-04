@@ -33,14 +33,22 @@ header {
         align-items: center;
 
         @include u.breakpoints(xlarge) {
-            display: none;
+            width: 100%;
         }
+    }
+
+    .hidden {
+        display: none;
     }
 
     .header-text {
         font-size: 1em;
         font-weight: 700;
         color: u.$black;
+
+        @include u.breakpoints(xlarge) {
+            font-size: 2.125em;
+        }
     }
 
     .step-text {

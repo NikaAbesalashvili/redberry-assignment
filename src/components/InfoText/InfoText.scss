@@ -4,9 +4,18 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
+    @include u.breakpoints(xlarge) {
+        gap: 5rem;
+    }
+
     .helper-text,
     .info-text {
         font-size: .875em;
+
+        @include u.breakpoints(xlarge) {
+            width: fit-content;
+            font-size: 1.375em;
+        }
     }
 
     .helper-text {

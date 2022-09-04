@@ -151,7 +151,7 @@ const AddRecord = () => {
                                 <>
                                     <div className='boxes' >
 
-                                        <div className="box">
+                                        <div className="box first ">
 
                                             <UploadImage
                                                 handleLaptopImageupload={handleLaptopImageUpload}
