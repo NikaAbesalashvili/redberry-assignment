@@ -41,7 +41,7 @@
 
             @include u.breakpoints(xlarge) {
                 padding: 5rem;
-                gap: 1rem;
+                gap: 1.15rem;
             }
         }
 
@@ -78,11 +78,6 @@
         padding: 2rem .75rem;
         background-color: u.$white;
         display: flex;
-
-        @include u.breakpoints(xlarge) {
-            padding: 0 10rem 2rem 10rem;
-        }
-
     }
 
     .back-span {
@@ -93,11 +88,19 @@
 
     .fend {
         justify-content: flex-end;
+
+        @include u.breakpoints(xlarge) {
+            padding-right: 5rem;
+        }
     }
 
     .space-between {
         justify-content: space-between;
         align-items: center;
+
+        @include u.breakpoints(xlarge) {
+            padding: 0 10rem 2rem 10rem;
+        }
     }
 
     .redberry-logo-desktop {

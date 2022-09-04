@@ -20,6 +20,10 @@
     .camera-icon {
         margin-bottom: 1rem;
         cursor: pointer;
+
+        @include u.breakpoints(xlarge) {
+            display: none;
+        }
     }
 
     .upload-image-text {
@@ -29,6 +33,38 @@
         font-size: 1em;
         font-weight: 400;
         color: u.$darkBlue;
+
+        @include u.breakpoints(xlarge) {
+            display: none;
+        }
+    }
+
+    .upload-image-text-desktop {
+        display: none;
+
+        @include u.breakpoints(xlarge) {
+            margin-bottom: 3rem;
+            padding-inline: 25rem;
+            display: block;
+            font-size: 1.25em;
+            font-weight: 500;
+            color: u.$darkBlue;
+            text-align: center;
+        }
+    }
+
+    .upload-image-span {
+        display: none;
+
+        @include u.breakpoints(xlarge) {
+            display: block;
+            padding: 1rem 4.5rem;
+            background-color: u.$blue;
+            font-size: 1.25em;
+            font-weight: 500;
+            color: u.$white;
+            border-radius: .5rem;
+        }
     }
 
     .image-text-error {
@@ -41,11 +77,20 @@
 
     .exc-icon {
         margin-top: 1rem;
+
+        @include u.breakpoints(xlarge) {
+            margin-bottom: 3rem;
+            scale: 2;
+        }
     }
 
     .laptop-image {
         width: 100%;
         border-radius: inherit;
+
+        @include u.breakpoints(xlarge) {
+            width: 30%;
+        }
     }
 }
 
@@ -53,7 +98,7 @@
     padding: 5rem 0;
 
     @include u.breakpoints(xlarge) {
-        padding: 10rem 0;
+        padding: 7rem 0;
     }
 }
 

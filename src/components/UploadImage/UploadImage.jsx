@@ -42,7 +42,10 @@ const UploadImage = ({
 
                 <label htmlFor='laptop-image-input' >
                     <img className='camera-icon' src={cameraIcon} alt="Camera Icon" />
-                    <h2 className={`upload-image-text ${error && 'image-text-error'}`} >ლეპტოპის ფოტოს ატვირთვა</h2>
+                    <h3 className={`upload-image-text ${error && 'image-text-error'}`} >ლეპტოპის ფოტოს ატვირთვა</h3>
+                    {error && <img className='exc-icon' src={excIcon}/>}
+                    <h2 className={`upload-image-text-desktop ${error && 'image-text-error'}`} >ჩააგდე ან ატვირთე ლეპტოპის ფოტო</h2>
+                    <span className='upload-image-span' >ატვირთე</span>
                     <input
                         className='laptop-image-input'
                         type="file"
@@ -50,7 +53,6 @@ const UploadImage = ({
                         id='laptop-image-input'
                         onChange={handleLaptopImageupload}
                     />
-                    {error && <img className='exc-icon' src={excIcon}/>}
                 </label>
 
             )}

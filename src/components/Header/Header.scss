@@ -38,7 +38,9 @@ header {
     }
 
     .hidden {
-        display: none;
+        @include u.breakpoints(xlarge) {
+            display: none;
+        }
     }
 
     .header-text {
