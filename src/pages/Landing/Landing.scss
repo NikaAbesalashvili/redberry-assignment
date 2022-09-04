@@ -1,3 +1,5 @@
+@use '../../scss/util' as u;
+
 .landing-section {
     padding: 5rem 0 2rem 0;
     height: 100%;
@@ -6,10 +8,31 @@
     justify-content: space-between;
     align-items: center;
 
+    @include u.breakpoints(xlarge) {
+        gap: 3rem;
+    }
+
+    .mobile-image {
+        @include u.breakpoints(xlarge) {
+            display: none;
+        }
+    }
+
+    .desktop-image {
+        @include u.breakpoints(xlarge) {
+            margin-bottom: 5rem;
+            display: block;
+        }
+    }
+
     .buttons {
         display: flex;
         gap: 1rem;
         flex-direction: column;
+
+        @include u.breakpoints(xlarge) {
+            gap: 2rem;
+        }
     }
 
 }

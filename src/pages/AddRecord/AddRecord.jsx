@@ -65,6 +65,7 @@ const AddRecord = () => {
                         headerStep={addRecordStep}
                         headerText='თანამშრომლის ინფო'
                         backButtonFunctionallity={handleBackButtonClick}
+                        hasNavigation={true}
                         // onUserInfo={decreaseStep}
                         onLaptopInfo={() => validateUserInfo(extractUserInfo(recordData))}
                     />
