@@ -30,6 +30,10 @@
         border-radius: .5rem;
         border: 1px solid u.$semiBlue;
         outline: none;
+    
+        &:focus {
+            background-color: u.$blueWhite;
+        }
     }
     
     .error-input {
