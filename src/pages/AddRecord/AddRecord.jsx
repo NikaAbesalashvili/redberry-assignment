@@ -176,19 +176,19 @@ const AddRecord = () => {
                                             <Select                 
                                                 options={laptopBrands}
                                                 handleSelectChange={handleCustomSelectChange}
-                                                selectedOption={`${recordData.laptop_brand_id ? laptopBrands[recordData.laptop_brand_id - 1] : 'ლეპტოპის ბრენდი'}`}
+                                                selectedOption={`${recordData.laptop_brand_id ? laptopBrands[recordData.laptop_brand_id - 1].name : 'ლეპტოპის ბრენდი'}`}
                                                 name='laptop_brand_id'
                                                 error={laptopErrors.laptopBrandError}
                                             />
 
                                         </div>
 
-                                        <div className="box">
+                                        <div className="box second">
 
                                             <Select                 
                                                 options={laptopCPUs}
                                                 handleSelectChange={handleCustomSelectChange}
-                                                selectedOption='CPU'
+                                                selectedOption={`${recordData.laptop_cpu ? recordData.laptop_cpu : 'CPU'}`}
                                                 name='laptop_cpu'
                                                 error={laptopErrors.laptopCPUError}
                                             />

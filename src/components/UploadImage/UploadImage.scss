@@ -133,12 +133,24 @@
                 font-weight: 400;
             }
 
+            .uploaded-image-name::after {
+
+                @include u.breakpoints(xlarge) {
+                    content: ',';
+                }
+            }
+
             .image-info {
                 display: flex;
                 flex-direction: column;
                 gap: .2rem;
-            }
 
+                @include u.breakpoints(xlarge) {
+                    margin-left: 1rem;
+                    flex-direction: row;
+                    gap: 1.5rem;
+                }
+            }
         }
     }
 
